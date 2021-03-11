@@ -1,6 +1,7 @@
 package com.example.kotlintestdemo.mvp.view.fragments;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
@@ -8,11 +9,16 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.adapter.HomeActivityVPAdapter;
 import com.example.kotlintestdemo.adapter.HomeFgVPAdapter;
+import com.example.kotlintestdemo.adapter.recyadapter.HoChild1FgRecyAdapter;
 import com.example.kotlintestdemo.base.BaseFragment;
 import com.example.kotlintestdemo.base.BaseMvpFragment;
 import com.example.kotlintestdemo.bean.BaseObjectBean;
@@ -27,25 +33,24 @@ import java.util.List;
 
 import butterknife.BindView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link HomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implements HoChild1FgMvp.View {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final String TAG = "HomeFragment";
     @BindView(R.id.banner_fghome)
     Banner bannerFghome;
-    @BindView(R.id.tab_fghome_top)
-    TabLayout tabFghomeTop;
-    @BindView(R.id.vp_fghome)
-    ViewPager vpFghome;
-    HomeFgVPAdapter vpAdapter;
-    private List<Fragment> fragments;
+    @BindView(R.id.rv_fghochild_main)
+    RecyclerView rvFghochildMain;
+    @BindView(R.id.fg_hochild_swiperefresh)
+    SwipeRefreshLayout fgHochildSwiperefresh;
     private String mParam1;
     private String mParam2;
+
+    private HoChild1FgRecyAdapter adapter;
+    private List<data.DatasBean> list;
+    private int page = 0;
 
     public HomeFragment() {
     }
@@ -75,30 +80,50 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
 
     @Override
     protected void initView(View View) {
-        fragments=new ArrayList<>();
-        HoChild1Fragment hoChild1Fragment= HoChild1Fragment.newInstance("asdfa", "asdfa");
-        HoChild2Fragment hoChild2Fragment= HoChild2Fragment.newInstance("asdfa", "asdfa");
-//        fragments.add(hoChild1Fragment );
-//        fragments.add(hoChild2Fragment );
+
+        list = new ArrayList<>();
+        mPresent = new HoChild1FgPresenter();
+        mPresent.attachView(HomeFragment.this);
+        mPresent.homeData(page);
 
 
-        vpAdapter=new HomeFgVPAdapter(getContext(),getChildFragmentManager(),
-                fragments, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        vpFghome.setAdapter(vpAdapter);
-        tabFghomeTop.setupWithViewPager(vpFghome);
-        vpFghome.setCurrentItem(0);
-        List<String> stringList=new ArrayList<>();
-        for (int i=0;i<fragments.size();i++) {
-            TabLayout.Tab tab=tabFghomeTop.newTab();
-            tab.setText(i+"");
-            tabFghomeTop.addTab(tab,i);
-        }
+        adapter = new HoChild1FgRecyAdapter(list);
+        adapter.getLoadMoreModule();
+        rvFghochildMain.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvFghochildMain.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
+        fgHochildSwiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                list.clear();
+                fgHochildSwiperefresh.setRefreshing(false);
+                mPresent.homeData(0);
+            }
+        });
+
+        adapter.getLoadMoreModule().setAutoLoadMore(true);
+        adapter.getLoadMoreModule().setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore() {
+                adapter.getLoadMoreModule().isLoading();
+                mPresent.homeData(page++);
+
+            }
+        });
     }
 
     @Override
     public void success(BaseObjectBean<data> bean) {
-
+        Log.e(TAG, "success: "+bean.getData().getSize() );
+        list.addAll(bean.getData().getDatas());
+        adapter.notifyDataSetChanged();
+        fgHochildSwiperefresh.setRefreshing(false);
+        if (bean.getData().getDatas().size()>0) {
+            adapter.getLoadMoreModule().loadMoreComplete();
+        } else {
+            adapter.getLoadMoreModule().loadMoreEnd();
+        }
     }
 
     @Override
@@ -113,6 +138,6 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
 
     @Override
     public void onError(String message) {
-
+        adapter.getLoadMoreModule().loadMoreFail();
     }
 }

@@ -22,8 +22,15 @@ public class HoChild1FgRecyAdapter extends BaseQuickAdapter<data.DatasBean,BaseV
 
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, data.DatasBean bean) {
+
         baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_title, bean.getTitle());
-        baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_author2, bean.getAuthor());
+        if (bean.getTitle().equals("")) {
+            baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_author2, bean.getAuthor());
+            baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_author, R.string.author);
+        } else {
+            baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_author2, bean.getShareUser());
+            baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_author, R.string.shareuse);
+        }
         baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_classify2, bean.getSuperChapterName());
         baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_time, bean.getNiceDate());
         Log.e(TAG, bean.toString());

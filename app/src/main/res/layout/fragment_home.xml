@@ -14,5 +14,17 @@
         android:id="@+id/banner_fghome"
         android:layout_width="match_parent"
         android:layout_height="120dp"/>
+  <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+      android:id="@+id/fg_hochild_swiperefresh"
+      android:layout_width="match_parent"
+      android:layout_marginHorizontal="20dp"
+      android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/rv_fghochild_main"
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+  </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
