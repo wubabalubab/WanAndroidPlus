@@ -1,9 +1,12 @@
 package com.example.kotlintestdemo.net;
 
 
+import com.example.kotlintestdemo.bean.BannerBean;
 import com.example.kotlintestdemo.bean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.bean.loginbean;
+
+import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.Field;
@@ -30,4 +33,7 @@ public interface APIService {
 
     @GET("article/list/{page}/json")
     Observable<BaseObjectBean<data>> homeData(@Path("page")int page);
+
+    @GET("banner/json")
+    Observable<BaseObjectBean<List<BannerBean>>> BannerData();
 }

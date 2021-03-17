@@ -1,8 +1,10 @@
 package com.example.kotlintestdemo.mvp.view.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.adapter.HomeActivityVPAdapter;
@@ -21,12 +24,16 @@ import com.example.kotlintestdemo.adapter.HomeFgVPAdapter;
 import com.example.kotlintestdemo.adapter.recyadapter.HoChild1FgRecyAdapter;
 import com.example.kotlintestdemo.base.BaseFragment;
 import com.example.kotlintestdemo.base.BaseMvpFragment;
+import com.example.kotlintestdemo.bean.BannerBean;
 import com.example.kotlintestdemo.bean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.HoChild1FgMvp;
 import com.example.kotlintestdemo.mvp.presenter.HoChild1FgPresenter;
 import com.google.android.material.tabs.TabLayout;
 import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.listener.OnBannerListener;
+import com.youth.banner.loader.ImageLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +41,7 @@ import java.util.List;
 import butterknife.BindView;
 
 
-public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implements HoChild1FgMvp.View {
+public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implements HoChild1FgMvp.View , OnBannerListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -51,6 +58,8 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     private HoChild1FgRecyAdapter adapter;
     private List<data.DatasBean> list;
     private int page = 0;
+    private List<String> imageurls=new ArrayList<>();
+    private List<String> bannerTitles=new ArrayList<>();
 
     public HomeFragment() {
     }
@@ -85,7 +94,8 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
         mPresent = new HoChild1FgPresenter();
         mPresent.attachView(HomeFragment.this);
         mPresent.homeData(page);
-
+        mPresent.BannerData();
+        bannerFghome.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
 
         adapter = new HoChild1FgRecyAdapter(list);
         adapter.getLoadMoreModule();
@@ -123,6 +133,37 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
             adapter.getLoadMoreModule().loadMoreComplete();
         } else {
             adapter.getLoadMoreModule().loadMoreEnd();
+        }
+    }
+
+    @Override
+    public void showBanner(BaseObjectBean<List<BannerBean>> bean) {
+        for (int i = 0; i < bean.getData().size(); i++) {
+            imageurls.add(bean.getData().get(i).getImagePath());
+            bannerTitles.add(bean.getData().get(i).getDesc());
+        }
+
+        bannerFghome.setImageLoader(new Myload());
+        bannerFghome.setImages(imageurls);
+        bannerFghome.setBannerTitles(bannerTitles);
+        bannerFghome.setDelayTime(3000);
+        bannerFghome.setIndicatorGravity(BannerConfig.CENTER)
+                .setOnBannerListener(this)
+                .start();
+    }
+
+    @Override
+    public void OnBannerClick(int position) {
+        Log.e(TAG, "OnBannerClick: "+position);
+    }
+
+    private class Myload extends ImageLoader{
+
+        @Override
+        public void displayImage(Context context, Object path, ImageView imageView) {
+            if (null!=getContext()) {
+                Glide.with(getContext()).load(path.toString()).into(imageView);
+            }
         }
     }
 

@@ -1,11 +1,14 @@
 package com.example.kotlintestdemo.mvp.presenter;
 
 import com.example.kotlintestdemo.base.BaseMvpPresenter;
+import com.example.kotlintestdemo.bean.BannerBean;
 import com.example.kotlintestdemo.bean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.HoChild1FgMvp;
 import com.example.kotlintestdemo.mvp.model.HoChild1FgModle;
 import com.example.kotlintestdemo.net.RxSuheduler;
+
+import java.util.List;
 
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
@@ -17,7 +20,27 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
     public HoChild1FgPresenter() {
         this.model = new HoChild1FgModle();
     }
+    @Override
+    public void BannerData() {
+        model.BannerData().compose(RxSuheduler.Obs_io_main())
+                .subscribe(new Observer<BaseObjectBean<List<BannerBean>>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        mView.showloading();
+                    }
 
+                    @Override
+                    public void onNext(BaseObjectBean<List<BannerBean>> listb) {
+                        mView.showBanner(listb);
+                    }
+                    @Override
+                    public void onError(Throwable e) {
+                    }
+                    @Override
+                    public void onComplete() {
+                    }
+                });
+    }
     @Override
     public void homeData(int page) {
         model.homeData(page).compose(RxSuheduler.Obs_io_main())
@@ -44,4 +67,5 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
                     }
                 });
     }
+
 }
