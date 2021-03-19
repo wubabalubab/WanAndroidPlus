@@ -2,13 +2,12 @@ package com.example.kotlintestdemo.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlintestdemo.R
 import com.example.kotlintestdemo.adapter.MainAdapter
-import com.example.kotlintestdemo.mvp.view.*
+import com.example.kotlintestdemo.mvp.view.activity.*
 import com.example.kotlintestdemo.mvp.view.fragments.BaseAdapterHelperDemo
 import com.example.kotlintestdemo.view.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -44,10 +43,13 @@ class MainActivity : AppCompatActivity() {
                 4 -> startActivity(Intent(this, BaseAdapterHelperDemo::class.java))
                 5 -> startActivity(Intent(this, XBannerActivity::class.java))
                 6 -> startActivity(Intent(this, DeleteActivity::class.java))
-                7 -> startActivity(Intent(this,HandlerActivity::class.java))
-                8 -> startActivity(Intent(this,Main2Activity::class.java))
+                7 -> startActivity(Intent(this,
+                    HandlerActivity::class.java))
+                8 -> startActivity(Intent(this,
+                    Main2Activity::class.java))
 //                9 -> startActivity(Intent(this,MineActivity::class.java))
-                9 -> startActivity(Intent(this,KnifeActivity::class.java))
+                9 -> startActivity(Intent(this,
+                    KnifeActivity::class.java))
             }
         }
         rv_main.layoutManager = LinearLayoutManager(this)

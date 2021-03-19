@@ -1,8 +1,8 @@
 package com.example.kotlintestdemo.mvp.presenter;
 
 import com.example.kotlintestdemo.base.BaseMvpPresenter;
-import com.example.kotlintestdemo.bean.BannerBean;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.BannerBean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.HoChild1FgMvp;
 import com.example.kotlintestdemo.mvp.model.HoChild1FgModle;

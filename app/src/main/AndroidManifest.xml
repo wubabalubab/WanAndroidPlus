@@ -22,7 +22,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true"
         >
-        <activity android:name=".mvp.view.SplashActivity"
+        <activity android:name=".mvp.view.activity.SplashActivity"
             android:theme="@style/splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.view.KnifeActivity" />
+        <activity android:name=".mvp.view.activity.KnifeActivity" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}"
@@ -47,18 +47,18 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".mvp.view.Main2Activity" />
-        <activity android:name=".mvp.view.HandlerActivity" />
-        <activity android:name=".mvp.view.DeleteActivity" />
-        <activity android:name=".mvp.view.XBannerActivity" />
+        <activity android:name=".mvp.view.activity.Main2Activity" />
+        <activity android:name=".mvp.view.activity.HandlerActivity" />
+        <activity android:name=".mvp.view.activity.DeleteActivity" />
+        <activity android:name=".mvp.view.activity.XBannerActivity" />
         <activity android:name=".mvp.view.fragments.BaseAdapterHelperDemo" />
-        <activity android:name=".mvp.view.RecyclerActivity" />
-        <activity android:name=".mvp.view.Swipe2Activity" />
-        <activity android:name=".mvp.view.SwipeActivity" />
+        <activity android:name=".mvp.view.activity.RecyclerActivity" />
+        <activity android:name=".mvp.view.activity.Swipe2Activity" />
+        <activity android:name=".mvp.view.activity.SwipeActivity" />
         <activity
             android:name=".view.ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".view.MainActivity"></activity>
+        <activity android:name=".view.MainActivity" />
     </application>
 
 </manifest>

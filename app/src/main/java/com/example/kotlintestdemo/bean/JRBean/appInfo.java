@@ -1,4 +1,4 @@
-package com.example.kotlintestdemo.bean;
+package com.example.kotlintestdemo.bean.JRBean;
 
 import android.graphics.drawable.Drawable;
 

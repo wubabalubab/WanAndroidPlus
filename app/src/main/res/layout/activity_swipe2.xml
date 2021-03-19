@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:viewBindingIgnore="true"
-    tools:context=".mvp.view.Swipe2Activity">
+    tools:context=".mvp.view.activity.Swipe2Activity">
 
     <EditText
         android:id="@+id/editText"

@@ -1,13 +1,12 @@
 package com.example.kotlintestdemo.adapter;
 
-import android.util.Log;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.kotlintestdemo.R;
-import com.example.kotlintestdemo.bean.appInfo;
+import com.example.kotlintestdemo.bean.JRBean.appInfo;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

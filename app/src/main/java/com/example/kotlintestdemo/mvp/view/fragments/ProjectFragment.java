@@ -9,19 +9,24 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.kotlintestdemo.R;
+import com.example.kotlintestdemo.base.BaseMvpFragment;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.TixiBean;
+import com.example.kotlintestdemo.mvp.contract.ProjectFgContract;
+import com.example.kotlintestdemo.mvp.presenter.ProjectFgPresenter;
+
+import java.util.List;
 
 
-public class ProjectFragment extends Fragment {
+public class ProjectFragment extends BaseMvpFragment<ProjectFgPresenter> implements ProjectFgContract.View {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
     public ProjectFragment() {
-        // Required empty public constructor
     }
 
 
@@ -44,9 +49,32 @@ public class ProjectFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected int layoutid() {
+        return R.layout.fragment_project;
+    }
 
-        return inflater.inflate(R.layout.fragment_project, container, false);
+    @Override
+    protected void initView(View View) {
+        mPresent.showTixiList();
+    }
+
+    @Override
+    public void setTixiList(BaseObjectBean<List<TixiBean>> bean) {
+
+    }
+
+    @Override
+    public void showloading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void onError(String message) {
+
     }
 }

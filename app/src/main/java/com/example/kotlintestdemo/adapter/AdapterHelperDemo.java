@@ -5,7 +5,7 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
 import com.example.kotlintestdemo.R;
-import com.example.kotlintestdemo.bean.articleBean;
+import com.example.kotlintestdemo.bean.JRBean.articleBean;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

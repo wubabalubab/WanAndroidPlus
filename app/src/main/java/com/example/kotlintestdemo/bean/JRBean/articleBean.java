@@ -1,4 +1,4 @@
-package com.example.kotlintestdemo.bean;
+package com.example.kotlintestdemo.bean.JRBean;
 
 public class articleBean {
     private int id;

@@ -1,8 +1,8 @@
 package com.example.kotlintestdemo.mvp.presenter;
 
 import com.example.kotlintestdemo.base.BaseMvpPresenter;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
-import com.example.kotlintestdemo.bean.loginbean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.loginbean;
 import com.example.kotlintestdemo.mvp.contract.SwipeContract;
 import com.example.kotlintestdemo.mvp.model.SwipeModel;
 import com.example.kotlintestdemo.net.RxSuheduler;

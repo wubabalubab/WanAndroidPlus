@@ -28,8 +28,8 @@ import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.adapter.AdapterHelperDemo;
 import com.example.kotlintestdemo.adapter.SharedAdapter;
-import com.example.kotlintestdemo.bean.appInfo;
-import com.example.kotlintestdemo.bean.articleBean;
+import com.example.kotlintestdemo.bean.JRBean.appInfo;
+import com.example.kotlintestdemo.bean.JRBean.articleBean;
 
 import java.util.ArrayList;
 import java.util.List;

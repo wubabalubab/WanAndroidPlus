@@ -1,10 +1,11 @@
 package com.example.kotlintestdemo.net;
 
 
-import com.example.kotlintestdemo.bean.BannerBean;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.BannerBean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.TixiBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
-import com.example.kotlintestdemo.bean.loginbean;
+import com.example.kotlintestdemo.bean.JRBean.loginbean;
 
 import java.util.List;
 
@@ -47,4 +48,9 @@ public interface APIService {
      */
     @GET("article/top/json")
     Observable<BaseObjectBean<List<data.DatasBean>>> getTopArticle();
+    /*
+    体系三级列表
+   */
+    @GET("tree/json")
+    Observable<BaseObjectBean<List<TixiBean>>> getTixiList();
 }

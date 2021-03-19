@@ -1,9 +1,8 @@
 package com.example.kotlintestdemo;
 
 
-import com.example.kotlintestdemo.mvp.view.KnifeActivity;
+import com.example.kotlintestdemo.mvp.view.activity.KnifeActivity;
 
-import org.hamcrest.core.Is;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

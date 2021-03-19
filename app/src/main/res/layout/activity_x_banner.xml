@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     tools:viewBindingIgnore="true"
     android:layout_height="match_parent"
-    tools:context=".mvp.view.XBannerActivity">
+    tools:context=".mvp.view.activity.XBannerActivity">
 <ImageView
     android:id="@+id/im_back"
     android:layout_width="match_parent"

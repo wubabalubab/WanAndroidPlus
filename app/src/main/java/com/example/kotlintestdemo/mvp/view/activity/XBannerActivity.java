@@ -1,4 +1,4 @@
-package com.example.kotlintestdemo.mvp.view;
+package com.example.kotlintestdemo.mvp.view.activity;
 
 import android.Manifest;
 import android.animation.ArgbEvaluator;
@@ -29,19 +29,15 @@ import com.youth.banner.Transformer;
 import com.youth.banner.listener.OnBannerListener;
 import com.youth.banner.loader.ImageLoader;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
-import retrofit2.http.Url;
 
 
 public class XBannerActivity extends BaseActivity implements OnBannerListener {

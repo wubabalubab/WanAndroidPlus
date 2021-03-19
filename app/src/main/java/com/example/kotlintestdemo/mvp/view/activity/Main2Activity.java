@@ -1,7 +1,6 @@
-package com.example.kotlintestdemo.mvp.view;
+package com.example.kotlintestdemo.mvp.view.activity;
 
 import android.Manifest;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -11,7 +10,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.adapter.HomeActivityVPAdapter;
 import com.example.kotlintestdemo.base.BaseMvpActivity;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.Main2Contract;
 import com.example.kotlintestdemo.mvp.presenter.Main2Presenter;

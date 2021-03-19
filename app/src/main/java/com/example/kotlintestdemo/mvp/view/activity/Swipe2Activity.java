@@ -1,8 +1,5 @@
-package com.example.kotlintestdemo.mvp.view;
+package com.example.kotlintestdemo.mvp.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,8 +7,8 @@ import android.widget.Toast;
 
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.base.BaseMvpActivity;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
-import com.example.kotlintestdemo.bean.loginbean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.loginbean;
 import com.example.kotlintestdemo.mvp.contract.SwipeContract;
 import com.example.kotlintestdemo.mvp.presenter.SwipePresenter;
 

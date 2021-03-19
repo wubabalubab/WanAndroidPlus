@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:viewBindingIgnore="true"
-    tools:context=".mvp.view.RecyclerActivity">
+    tools:context=".mvp.view.activity.RecyclerActivity">
     <FrameLayout
         android:id="@+id/framelayout"
         android:layout_width="match_parent"

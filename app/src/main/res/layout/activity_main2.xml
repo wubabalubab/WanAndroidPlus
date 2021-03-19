@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:viewBindingIgnore="true"
-    tools:context=".mvp.view.Main2Activity">
+    tools:context=".mvp.view.activity.Main2Activity">
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_actmain"

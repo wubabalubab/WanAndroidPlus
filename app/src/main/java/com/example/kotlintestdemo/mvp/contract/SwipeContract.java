@@ -1,8 +1,8 @@
 package com.example.kotlintestdemo.mvp.contract;
 
 import com.example.kotlintestdemo.base.BaseView;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
-import com.example.kotlintestdemo.bean.loginbean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.loginbean;
 
 import io.reactivex.Observable;
 

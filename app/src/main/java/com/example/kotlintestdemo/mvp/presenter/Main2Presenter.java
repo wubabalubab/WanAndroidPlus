@@ -1,7 +1,7 @@
 package com.example.kotlintestdemo.mvp.presenter;
 
 import com.example.kotlintestdemo.base.BaseMvpPresenter;
-import com.example.kotlintestdemo.bean.BaseObjectBean;
+import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.Main2Contract;
 import com.example.kotlintestdemo.mvp.model.Main2Model;

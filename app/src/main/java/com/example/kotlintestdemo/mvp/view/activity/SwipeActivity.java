@@ -1,4 +1,4 @@
-package com.example.kotlintestdemo.mvp.view;
+package com.example.kotlintestdemo.mvp.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

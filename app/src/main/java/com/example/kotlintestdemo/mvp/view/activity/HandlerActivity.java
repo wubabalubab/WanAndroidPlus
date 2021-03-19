@@ -1,4 +1,4 @@
-package com.example.kotlintestdemo.mvp.view;
+package com.example.kotlintestdemo.mvp.view.activity;
 
 import android.content.Intent;
 import android.os.Handler;
