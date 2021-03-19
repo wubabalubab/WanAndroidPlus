@@ -3,7 +3,7 @@ package com.example.kotlintestdemo.bean.JRBean;
 import java.util.List;
 
 /**
- *  首页文章类
+ *  首页文章类 置顶文章也是DatasBean类
  */
     public  class data {
         /**

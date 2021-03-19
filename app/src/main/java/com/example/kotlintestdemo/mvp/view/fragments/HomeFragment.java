@@ -60,8 +60,10 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     private int page = 0;
     private List<String> imageurls=new ArrayList<>();
     private List<String> bannerTitles=new ArrayList<>();
+    private List<data.DatasBean> toplist=new ArrayList<>();
 
     public HomeFragment() {
+
     }
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -93,10 +95,11 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
         list = new ArrayList<>();
         mPresent = new HoChild1FgPresenter();
         mPresent.attachView(HomeFragment.this);
+        mPresent.getTopArticle();
         mPresent.homeData(page);
         mPresent.BannerData();
-        bannerFghome.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
 
+        bannerFghome.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
         adapter = new HoChild1FgRecyAdapter(list);
         adapter.getLoadMoreModule();
         rvFghochildMain.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -108,6 +111,7 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
             public void onRefresh() {
                 list.clear();
                 fgHochildSwiperefresh.setRefreshing(false);
+                mPresent.getTopArticle();
                 mPresent.homeData(0);
             }
         });
@@ -125,31 +129,43 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
 
     @Override
     public void success(BaseObjectBean<data> bean) {
-        Log.e(TAG, "success: "+bean.getData().getSize() );
-        list.addAll(bean.getData().getDatas());
-        adapter.notifyDataSetChanged();
-        fgHochildSwiperefresh.setRefreshing(false);
-        if (bean.getData().getDatas().size()>0) {
-            adapter.getLoadMoreModule().loadMoreComplete();
-        } else {
-            adapter.getLoadMoreModule().loadMoreEnd();
+        if (bean.getErrorCode()==0) {
+            Log.e(TAG, "success: "+bean.getData().getSize() );
+            list.addAll(bean.getData().getDatas());
+            adapter.notifyDataSetChanged();
+            fgHochildSwiperefresh.setRefreshing(false);
+            if (bean.getData().getDatas().size()>0) {
+                adapter.getLoadMoreModule().loadMoreComplete();
+            } else {
+                adapter.getLoadMoreModule().loadMoreEnd();
+            }
         }
     }
 
     @Override
     public void showBanner(BaseObjectBean<List<BannerBean>> bean) {
-        for (int i = 0; i < bean.getData().size(); i++) {
-            imageurls.add(bean.getData().get(i).getImagePath());
-            bannerTitles.add(bean.getData().get(i).getDesc());
+        if (bean.getErrorCode()==0) {
+            for (int i = 0; i < bean.getData().size(); i++) {
+                imageurls.add(bean.getData().get(i).getImagePath());
+                bannerTitles.add(bean.getData().get(i).getDesc());
+            }
+            bannerFghome.setImageLoader(new Myload());
+            bannerFghome.setImages(imageurls);
+            bannerFghome.setBannerTitles(bannerTitles);
+            bannerFghome.setDelayTime(3000);
+            bannerFghome.setIndicatorGravity(BannerConfig.CENTER)
+                    .setOnBannerListener(this)
+                    .start();
         }
+    }
 
-        bannerFghome.setImageLoader(new Myload());
-        bannerFghome.setImages(imageurls);
-        bannerFghome.setBannerTitles(bannerTitles);
-        bannerFghome.setDelayTime(3000);
-        bannerFghome.setIndicatorGravity(BannerConfig.CENTER)
-                .setOnBannerListener(this)
-                .start();
+    @Override
+    public void showTopArticle(BaseObjectBean<List<data.DatasBean>> bean) {
+        if (bean.getErrorCode()==0) {
+            Log.e(TAG, "showTopArticle: "+bean.getData().size() );
+            list.addAll(bean.getData());
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

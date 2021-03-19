@@ -41,6 +41,33 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
                     }
                 });
     }
+
+    @Override
+    public void getTopArticle() {
+        model.getTopArticle().compose(RxSuheduler.Obs_io_main())
+                .subscribe(new Observer<BaseObjectBean<List<data.DatasBean>>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(BaseObjectBean<List<data.DatasBean>> bean) {
+            mView.showTopArticle(bean);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
     @Override
     public void homeData(int page) {
         model.homeData(page).compose(RxSuheduler.Obs_io_main())

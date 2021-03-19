@@ -21,4 +21,9 @@ public class HoChild1FgModle implements HoChild1FgMvp.Model {
     public Observable<BaseObjectBean<List<BannerBean>>> BannerData() {
         return RetrofitClient.getInstance().getAPIService().BannerData();
     }
+
+    @Override
+    public Observable<BaseObjectBean<List<data.DatasBean>>> getTopArticle() {
+        return RetrofitClient.getInstance().getAPIService().getTopArticle();
+    }
 }

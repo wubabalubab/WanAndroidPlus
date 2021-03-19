@@ -32,7 +32,7 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
 
     private static final String TAG = "Main2Activity";
     BaseObjectBean<data> dataBaseObjectBean;
-    List<data.DatasBean> datasList;
+    List<data.DatasBean> datasList=new ArrayList<>();
     private static final int requestCode = 893;
     @BindView(R.id.vp_actmain)
     ViewPager vpActmain;
@@ -72,10 +72,6 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
         fragments.add(new MineFragment());
         HomeActivityVPAdapter vpAdapter = new HomeActivityVPAdapter(this, getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragments);
-        if (vpAdapter == null) {
-            Log.e(TAG, "initView: " + vpAdapter.toString());
-            Log.e(TAG, "initView: " + vpAdapter);
-        }
         vpActmain.setAdapter(vpAdapter);
 
 

@@ -23,6 +23,10 @@ public class HoChild1FgRecyAdapter extends BaseQuickAdapter<data.DatasBean,BaseV
     @Override
     protected void convert(@NotNull BaseViewHolder baseViewHolder, data.DatasBean bean) {
 
+        if (bean.getType()==1) {
+            baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_type, "置顶");
+        } else {
+        }
         baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_title, bean.getTitle());
         if (bean.getTitle().equals("")) {
             baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_author2, bean.getAuthor());
@@ -33,6 +37,5 @@ public class HoChild1FgRecyAdapter extends BaseQuickAdapter<data.DatasBean,BaseV
         }
         baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_classify2, bean.getSuperChapterName());
         baseViewHolder.setText(R.id.tv_item_rv_hochildfgad_time, bean.getNiceDate());
-        Log.e(TAG, bean.toString());
     }
 }

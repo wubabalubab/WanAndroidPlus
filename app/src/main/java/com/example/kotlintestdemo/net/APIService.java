@@ -30,10 +30,21 @@ public interface APIService {
     Observable<BaseObjectBean<loginbean>> login(
             @Field("username") String username, @Field("password") String password);
 
-
+    /**
+     * 首页文章列表
+     * @param page 页码 0开始
+     * @return
+     */
     @GET("article/list/{page}/json")
     Observable<BaseObjectBean<data>> homeData(@Path("page")int page);
-
+    /*
+       获取banner
+     */
     @GET("banner/json")
     Observable<BaseObjectBean<List<BannerBean>>> BannerData();
+    /*
+    获取首页置顶文章
+     */
+    @GET("article/top/json")
+    Observable<BaseObjectBean<List<data.DatasBean>>> getTopArticle();
 }
