@@ -2,15 +2,19 @@ package com.example.kotlintestdemo.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kotlintestdemo.R
 import com.example.kotlintestdemo.adapter.MainAdapter
+import com.example.kotlintestdemo.bean.JRBean.data
 import com.example.kotlintestdemo.mvp.view.activity.*
 import com.example.kotlintestdemo.mvp.view.fragments.BaseAdapterHelperDemo
+import com.example.kotlintestdemo.util.MyConstant
 import com.example.kotlintestdemo.view.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.math.log
 
 class MainActivity : AppCompatActivity() {
     lateinit var mAdapter: MainAdapter
@@ -55,6 +59,7 @@ class MainActivity : AppCompatActivity() {
         rv_main.layoutManager = LinearLayoutManager(this)
         rv_main.adapter = mAdapter;
         test1(0)
+
     }
 
     private fun test1(a: Int): Int {

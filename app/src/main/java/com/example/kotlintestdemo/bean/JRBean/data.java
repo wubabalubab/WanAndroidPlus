@@ -1,14 +1,17 @@
 package com.example.kotlintestdemo.bean.JRBean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *  首页文章类 置顶文章也是DatasBean类
  */
-    public  class data {
+    public  class data implements Parcelable {
         /**
          * curPage : 2
-         * datas : [{"apkLink":"","audit":1,"author":"390057892","canEdit":false,"chapterId":294,"chapterName":"完整项目","collect":false,"courseId":13,"desc":"一款使用Kt编写的小说阅读器,支持追书、看书。拥有语音朗读、仿真翻页、插画、国际化、黑夜模式等功能，适配了安卓9.0,使用AndroidX控件,对刘海屏等异形屏幕有了很好的支持","descMd":"","envelopePic":"https://www.wanandroid.com/blogimgs/0c2f76e3-0af7-4dae-a4d8-98173d24512c.png","fresh":false,"host":"","id":16908,"link":"https://www.wanandroid.com/blog/show/2903","niceDate":"2021-01-14 23:48","niceShareDate":"2021-01-14 23:48","origin":"","prefix":"","projectLink":"https://github.com/390057892/reader","publishTime":1610639337000,"realSuperChapterId":293,"selfVisible":0,"shareDate":1610639337000,"shareUser":"","superChapterId":294,"superChapterName":"开源项目主Tab","tags":[{"name":"项目","url":"/project/list/1?cid=294"}],"title":"&quot;轻之阅读&quot;网络小说阅读器 Reader","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"KKaKa","canEdit":false,"chapterId":294,"chapterName":"完整项目","collect":false,"courseId":13,"desc":"Kotlin写的MVVM + LiveData + RxJava + okHttp + Retrofit + Room +Glide的玩Android客户端","descMd":"","envelopePic":"https://www.wanandroid.com/blogimgs/5110fb23-ce6b-4bd0-84c5-66a0e19b056a.png","fresh":false,"host":"","id":16903,"link":"https://www.wanandroid.com/blog/show/2902","niceDate":"2021-01-14 23:42","niceShareDate":"2021-01-14 23:42","origin":"","prefix":"","projectLink":"https://github.com/KKaKa/WanAndroid","publishTime":1610638942000,"realSuperChapterId":293,"selfVisible":0,"shareDate":1610638942000,"shareUser":"","superChapterId":294,"superChapterName":"开源项目主Tab","tags":[{"name":"项目","url":"/project/list/1?cid=294"}],"title":"Kotlin+MVVM的客户端","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"iDeMonnnnnn","canEdit":false,"chapterId":539,"chapterName":"未分类","collect":false,"courseId":13,"desc":"基于boxing的AndroidQ适配","descMd":"","envelopePic":"https://www.wanandroid.com/blogimgs/cf2adc5e-7bdc-4eb9-a894-8798241071a6.png","fresh":false,"host":"","id":16891,"link":"https://www.wanandroid.com/blog/show/2901","niceDate":"2021-01-14 23:38","niceShareDate":"2021-01-14 23:38","origin":"","prefix":"","projectLink":"https://github.com/iDeMonnnnnn/Qboxing","publishTime":1610638720000,"realSuperChapterId":293,"selfVisible":0,"shareDate":1610638720000,"shareUser":"","superChapterId":294,"superChapterName":"开源项目主Tab","tags":[{"name":"项目","url":"/project/list/1?cid=539"}],"title":"基于boxing的AndroidQ适配","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16887,"link":"https://juejin.cn/post/6917486983946338318/","niceDate":"2021-01-14 13:47","niceShareDate":"2021-01-14 13:47","origin":"","prefix":"","projectLink":"","publishTime":1610603279000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610603279000,"shareUser":"彭旭锐","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"「Gradle」| 进阶篇（Project &amp; Task &amp; 构建生命周期）","type":0,"userId":30587,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16885,"link":"https://juejin.cn/post/6917037834222174222","niceDate":"2021-01-14 09:49","niceShareDate":"2021-01-14 09:49","origin":"","prefix":"","projectLink":"","publishTime":1610588970000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610588970000,"shareUser":"jimu","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"《犬夜叉2021》我想通过Binder找到你","type":0,"userId":72158,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"鸿洋","canEdit":false,"chapterId":408,"chapterName":"鸿洋","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16889,"link":"https://mp.weixin.qq.com/s/CLFvOQroaRALIFTcD6J9Aw","niceDate":"2021-01-14 00:00","niceShareDate":"2021-01-14 23:36","origin":"","prefix":"","projectLink":"","publishTime":1610553600000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610638603000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/408/1"}],"title":"Git各指令的本质，真是通俗易懂啊","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"郭霖","canEdit":false,"chapterId":409,"chapterName":"郭霖","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16890,"link":"https://mp.weixin.qq.com/s/739xdk57OIp8aYi5aYEWEQ","niceDate":"2021-01-14 00:00","niceShareDate":"2021-01-14 23:36","origin":"","prefix":"","projectLink":"","publishTime":1610553600000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610638616000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/409/1"}],"title":"踩坑之路：finish方法执行后居然还有这种操作？","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"yzbkaka","canEdit":false,"chapterId":294,"chapterName":"完整项目","collect":false,"courseId":13,"desc":"一款基于MeetMusic的Android本地音乐播放器，具有音乐播放，创建歌单，主题变色，暗色模式以及状态播放通知等功能`，完成度较高，同时代码注释比较详解，比较适合android开发学习。\r\n","descMd":"","envelopePic":"https://www.wanandroid.com/blogimgs/c7a989d6-7c3e-46bd-846f-abc75f0bc2b3.png","fresh":false,"host":"","id":16882,"link":"https://www.wanandroid.com/blog/show/2900","niceDate":"2021-01-13 23:51","niceShareDate":"2021-01-13 23:51","origin":"","prefix":"","projectLink":"https://github.com/yzbkaka/kakaMusic","publishTime":1610553061000,"realSuperChapterId":293,"selfVisible":0,"shareDate":1610553061000,"shareUser":"","superChapterId":294,"superChapterName":"开源项目主Tab","tags":[{"name":"项目","url":"/project/list/1?cid=294"}],"title":"一款酷炫的android本地播放器","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"Mrfzh","canEdit":false,"chapterId":294,"chapterName":"完整项目","collect":false,"courseId":13,"desc":"个人开发的小说阅读器，支持搜索和阅读网络小说，导入和阅读本地 TXT、本地 EPUB 小说。","descMd":"","envelopePic":"https://www.wanandroid.com/blogimgs/d3c24118-d9db-424d-a8f7-120f75564cf1.png","fresh":false,"host":"","id":16881,"link":"https://www.wanandroid.com/blog/show/2899","niceDate":"2021-01-13 23:49","niceShareDate":"2021-01-13 23:49","origin":"","prefix":"","projectLink":"https://github.com/Mrfzh/FReader","publishTime":1610552980000,"realSuperChapterId":293,"selfVisible":0,"shareDate":1610552980000,"shareUser":"","superChapterId":294,"superChapterName":"开源项目主Tab","tags":[{"name":"项目","url":"/project/list/1?cid=294"}],"title":"FReader 小说阅读器，支持阅读网络、本地 TXT、本地 EPUB 小说","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16876,"link":"https://yanbober.blog.csdn.net/article/details/112487959","niceDate":"2021-01-13 21:16","niceShareDate":"2021-01-13 21:16","origin":"","prefix":"","projectLink":"","publishTime":1610543792000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610543792000,"shareUser":"工匠若水","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"AnnotationProcessor 处理器不工作怎么定位？","type":0,"userId":82790,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16875,"link":"https://juejin.cn/post/6916818167205625863","niceDate":"2021-01-13 18:44","niceShareDate":"2021-01-13 18:44","origin":"","prefix":"","projectLink":"","publishTime":1610534682000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610534682000,"shareUser":"ClericYi","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"（建议精读）一文夯实你的网络基础","type":0,"userId":43964,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16874,"link":"https://juejin.cn/post/6917131822711341070","niceDate":"2021-01-13 17:34","niceShareDate":"2021-01-13 17:34","origin":"","prefix":"","projectLink":"","publishTime":1610530496000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610530496000,"shareUser":"彭旭锐","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"「数据结构」| 二叉树高频题型汇总","type":0,"userId":30587,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"谷歌开发者","canEdit":false,"chapterId":415,"chapterName":"谷歌开发者","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16878,"link":"https://mp.weixin.qq.com/s/B9p4EUIaFhL-JcNAjopOKw","niceDate":"2021-01-13 00:00","niceShareDate":"2021-01-13 23:46","origin":"","prefix":"","projectLink":"","publishTime":1610467200000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610552815000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/415/1"}],"title":"自定义 Lint 检查实践指南 | 开发者说&middot;DTalk","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"鸿洋","canEdit":false,"chapterId":408,"chapterName":"鸿洋","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16879,"link":"https://mp.weixin.qq.com/s/iq0Kq2EtU3ljJlneD_p6rg","niceDate":"2021-01-13 00:00","niceShareDate":"2021-01-13 23:47","origin":"","prefix":"","projectLink":"","publishTime":1610467200000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610552830000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/408/1"}],"title":"推荐一个基于 okhttp 的网络性能优化库","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"郭霖","canEdit":false,"chapterId":409,"chapterName":"郭霖","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16880,"link":"https://mp.weixin.qq.com/s/f6tD0xRodfjb4TldnPOK6Q","niceDate":"2021-01-13 00:00","niceShareDate":"2021-01-13 23:47","origin":"","prefix":"","projectLink":"","publishTime":1610467200000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610552845000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/409/1"}],"title":"Activity精选内容，看看还有没有你的盲点！","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"Colaman0","canEdit":false,"chapterId":539,"chapterName":"未分类","collect":false,"courseId":13,"desc":"StatusLayout有以下几个优点\r\n1.自由定制需要的状态以及对应布局，只需要一行代码\r\n2.可以定制动画效果\r\n3.可以用在旧项目上，不需要修改原有xml文件\r\n4.可设置全局属性避免重复劳动","descMd":"","envelopePic":"https://www.wanandroid.com/blogimgs/cab1810b-615a-41f3-a010-66b8a1a4f4f6.png","fresh":false,"host":"","id":16870,"link":"https://www.wanandroid.com/blog/show/2896","niceDate":"2021-01-12 23:32","niceShareDate":"2021-01-12 23:32","origin":"","prefix":"","projectLink":"https://github.com/Colaman0/StatusLayout","publishTime":1610465550000,"realSuperChapterId":293,"selfVisible":0,"shareDate":1610465550000,"shareUser":"","superChapterId":294,"superChapterName":"开源项目主Tab","tags":[{"name":"项目","url":"/project/list/1?cid=539"}],"title":"一个超高自定义度又简单的页面状态管理库","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16863,"link":"https://juejin.cn/post/6916687373208125447","niceDate":"2021-01-12 10:20","niceShareDate":"2021-01-12 10:20","origin":"","prefix":"","projectLink":"","publishTime":1610418039000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610418039000,"shareUser":"彭旭锐","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"「Gradle」| 手把手自定义 Gradle 插件","type":0,"userId":30587,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"","canEdit":false,"chapterId":502,"chapterName":"自助","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16862,"link":"https://juejin.cn/post/6916017168861626382","niceDate":"2021-01-12 10:08","niceShareDate":"2021-01-12 10:08","origin":"","prefix":"","projectLink":"","publishTime":1610417290000,"realSuperChapterId":493,"selfVisible":0,"shareDate":1610417290000,"shareUser":"光术","superChapterId":494,"superChapterName":"广场Tab","tags":[],"title":"技术知识体系构建","type":0,"userId":27937,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"鸿洋","canEdit":false,"chapterId":408,"chapterName":"鸿洋","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16868,"link":"https://mp.weixin.qq.com/s/OzY8Y-Q9DROSRuKFmcSPjA","niceDate":"2021-01-12 00:00","niceShareDate":"2021-01-12 23:29","origin":"","prefix":"","projectLink":"","publishTime":1610380800000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610465397000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/408/1"}],"title":"小题大做 | 内存泄漏简单问，你能答对吗","type":0,"userId":-1,"visible":1,"zan":0},{"apkLink":"","audit":1,"author":"郭霖","canEdit":false,"chapterId":409,"chapterName":"郭霖","collect":false,"courseId":13,"desc":"","descMd":"","envelopePic":"","fresh":false,"host":"","id":16869,"link":"https://mp.weixin.qq.com/s/jcnFN73d002OfRXRx6u3yA","niceDate":"2021-01-12 00:00","niceShareDate":"2021-01-12 23:30","origin":"","prefix":"","projectLink":"","publishTime":1610380800000,"realSuperChapterId":407,"selfVisible":0,"shareDate":1610465414000,"shareUser":"","superChapterId":408,"superChapterName":"公众号","tags":[{"name":"公众号","url":"/wxarticle/list/409/1"}],"title":"你好，Activity Results API！","type":0,"userId":-1,"visible":1,"zan":0}]
          * offset : 20
          * over : false
          * pageCount : 494
@@ -93,7 +96,7 @@ import java.util.List;
                     '}';
         }
 
-        public static class DatasBean {
+        public static class DatasBean implements Parcelable {
             /**
              * apkLink :
              * audit : 1
@@ -467,7 +470,7 @@ import java.util.List;
                         '}';
             }
 
-            public static class TagsBean {
+            public static class TagsBean implements Parcelable {
                 /**
                  * name : 项目
                  * url : /project/list/1?cid=294
@@ -499,7 +502,178 @@ import java.util.List;
                             ", url='" + url + '\'' +
                             '}';
                 }
+
+                @Override
+                public int describeContents() {
+                    return 0;
+                }
+
+                @Override
+                public void writeToParcel(Parcel dest, int flags) {
+                    dest.writeString(this.name);
+                    dest.writeString(this.url);
+                }
+
+                public TagsBean() {
+                }
+
+                protected TagsBean(Parcel in) {
+                    this.name = in.readString();
+                    this.url = in.readString();
+                }
+
+                public static final Creator<TagsBean> CREATOR = new Creator<TagsBean>() {
+                    @Override
+                    public TagsBean createFromParcel(Parcel source) {
+                        return new TagsBean(source);
+                    }
+
+                    @Override
+                    public TagsBean[] newArray(int size) {
+                        return new TagsBean[size];
+                    }
+                };
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(this.apkLink);
+                dest.writeInt(this.audit);
+                dest.writeString(this.author);
+                dest.writeByte(this.canEdit ? (byte) 1 : (byte) 0);
+                dest.writeInt(this.chapterId);
+                dest.writeString(this.chapterName);
+                dest.writeByte(this.collect ? (byte) 1 : (byte) 0);
+                dest.writeInt(this.courseId);
+                dest.writeString(this.desc);
+                dest.writeString(this.descMd);
+                dest.writeString(this.envelopePic);
+                dest.writeByte(this.fresh ? (byte) 1 : (byte) 0);
+                dest.writeString(this.host);
+                dest.writeInt(this.id);
+                dest.writeString(this.link);
+                dest.writeString(this.niceDate);
+                dest.writeString(this.niceShareDate);
+                dest.writeString(this.origin);
+                dest.writeString(this.prefix);
+                dest.writeString(this.projectLink);
+                dest.writeLong(this.publishTime);
+                dest.writeInt(this.realSuperChapterId);
+                dest.writeInt(this.selfVisible);
+                dest.writeLong(this.shareDate);
+                dest.writeString(this.shareUser);
+                dest.writeInt(this.superChapterId);
+                dest.writeString(this.superChapterName);
+                dest.writeString(this.title);
+                dest.writeInt(this.type);
+                dest.writeInt(this.userId);
+                dest.writeInt(this.visible);
+                dest.writeInt(this.zan);
+                dest.writeTypedList(this.tags);
+//                dest.writeList(this.tags);
+            }
+
+            public DatasBean() {
+            }
+
+            protected DatasBean(Parcel in) {
+                this.apkLink = in.readString();
+                this.audit = in.readInt();
+                this.author = in.readString();
+                this.canEdit = in.readByte() != 0;
+                this.chapterId = in.readInt();
+                this.chapterName = in.readString();
+                this.collect = in.readByte() != 0;
+                this.courseId = in.readInt();
+                this.desc = in.readString();
+                this.descMd = in.readString();
+                this.envelopePic = in.readString();
+                this.fresh = in.readByte() != 0;
+                this.host = in.readString();
+                this.id = in.readInt();
+                this.link = in.readString();
+                this.niceDate = in.readString();
+                this.niceShareDate = in.readString();
+                this.origin = in.readString();
+                this.prefix = in.readString();
+                this.projectLink = in.readString();
+                this.publishTime = in.readLong();
+                this.realSuperChapterId = in.readInt();
+                this.selfVisible = in.readInt();
+                this.shareDate = in.readLong();
+                this.shareUser = in.readString();
+                this.superChapterId = in.readInt();
+                this.superChapterName = in.readString();
+                this.title = in.readString();
+                this.type = in.readInt();
+                this.userId = in.readInt();
+                this.visible = in.readInt();
+                this.zan = in.readInt();
+                this.tags=in.createTypedArrayList(TagsBean.CREATOR);
+//                this.tags = new ArrayList<TagsBean>();
+//                in.readList(this.tags, TagsBean.class.getClassLoader());
+            }
+
+            public static final Creator<DatasBean> CREATOR = new Creator<DatasBean>() {
+                @Override
+                public DatasBean createFromParcel(Parcel source) {
+                    return new DatasBean(source);
+                }
+
+                @Override
+                public DatasBean[] newArray(int size) {
+                    return new DatasBean[size];
+                }
+            };
         }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.curPage);
+        dest.writeInt(this.offset);
+        dest.writeByte(this.over ? (byte) 1 : (byte) 0);
+        dest.writeInt(this.pageCount);
+        dest.writeInt(this.size);
+        dest.writeInt(this.total);
+//        dest.writeList(this.datas);
+        dest.writeTypedList(this.datas);
+    }
+
+    public data() {
+    }
+
+    protected data(Parcel in) {
+        this.curPage = in.readInt();
+        this.offset = in.readInt();
+        this.over = in.readByte() != 0;
+        this.pageCount = in.readInt();
+        this.size = in.readInt();
+        this.total = in.readInt();
+        this.datas =in.createTypedArrayList(DatasBean.CREATOR);
+//        this.datas = new ArrayList<DatasBean>();
+//        in.readList(this.datas, DatasBean.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<data> CREATOR = new Parcelable.Creator<data>() {
+        @Override
+        public data createFromParcel(Parcel source) {
+            return new data(source);
+        }
+
+        @Override
+        public data[] newArray(int size) {
+            return new data[size];
+        }
+    };
+}
 

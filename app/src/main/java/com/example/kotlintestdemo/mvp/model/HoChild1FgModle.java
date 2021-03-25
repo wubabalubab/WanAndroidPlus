@@ -13,8 +13,7 @@ import io.reactivex.Observable;
 public class HoChild1FgModle implements HoChild1FgMvp.Model {
     @Override
     public Observable<BaseObjectBean<data>> homeData(int page) {
-        return RetrofitClient.getInstance().getAPIService()
-                .homeData(page);
+        return RetrofitClient.getInstance().getAPIService().homeData(page);
     }
 
     @Override

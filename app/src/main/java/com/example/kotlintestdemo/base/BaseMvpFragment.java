@@ -11,5 +11,6 @@ public abstract class BaseMvpFragment<T extends BaseMvpPresenter> extends BaseFr
         super.onDestroyView();
     }
 
+
     // FIXME: 20/12/2020 MVP导致内存泄露
 }

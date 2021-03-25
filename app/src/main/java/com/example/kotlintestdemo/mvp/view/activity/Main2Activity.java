@@ -1,9 +1,12 @@
 package com.example.kotlintestdemo.mvp.view.activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -51,7 +54,8 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
 
     @AfterPermissionGranted(requestCode)
     private void RequestPermission(){
-        String[] permissions={Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        String[] permissions={Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.READ_PHONE_STATE};
         if (!EasyPermissions.hasPermissions(this, permissions)) {
             EasyPermissions.requestPermissions(this,"kotlinrequest",requestCode,permissions);
         }
@@ -60,19 +64,30 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
 
     @Override
     public void initView() {
+        RequestPermission();
         mPresenter = new Main2Presenter();
 //        mPresenter.attachView(this);
 //        mPresenter.homeData(0);
 
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(HomeFragment.newInstance("parmer1", "param2"));
-        fragments.add(new ProjectFragment());
+
+//        FragmentManager fm=getSupportFragmentManager();
+//        HomeFragment fragment= (HomeFragment) fm.findFragmentByTag("fragment_tab");
+//        if (fragment != null) {
+//            fm.beginTransaction().remove(fragment).commit();
+//        }
+//        fm.beginTransaction().add();
+
+        fragments.add(HomeFragment.newInstance("asdf", "asdf"));
+        fragments.add(ProjectFragment.newInstance("asdf", "asdf"));
         fragments.add(new OtherFragment());
         fragments.add(new MineFragment());
         HomeActivityVPAdapter vpAdapter = new HomeActivityVPAdapter(this, getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragments);
-        vpActmain.setAdapter(vpAdapter);
 
+//        vpAdapter.setPrimaryItem();
+//        vpActmain.setOffscreenPageLimit(4);
+        vpActmain.setAdapter(vpAdapter);
 
         vpActmain.setCurrentItem(0);
         tabActmain.setupWithViewPager(vpActmain);
@@ -94,6 +109,16 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
             }
         });
     }
+
+//    @SuppressLint("MissingSuperCall")
+//    @Override
+//    protected void onSaveInstanceState(@NonNull Bundle outState) {
+////        super.onSaveInstanceState(outState);
+//        if (outState != null) {
+//            String Fragmentag = "androidx.fragment.app";
+//            outState.remove(Fragmentag);
+//        }
+//    }
 
     @Override
     public void success(BaseObjectBean<data> bean) {

@@ -25,7 +25,12 @@ public class HomeActivityVPAdapter extends FragmentPagerAdapter {
         this.context = context;
     }
 
-    // 已经fragment 恢复创建问题，
+    public HomeActivityVPAdapter(@NonNull FragmentManager fm, int behavior, List<Fragment> fragments, Context context) {
+        super(fm, behavior);
+        this.fragments = fragments;
+        this.context = context;
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {

@@ -1,6 +1,8 @@
 package com.example.kotlintestdemo.base;
 
+import android.app.ActivityManager;
 import android.app.Application;
+import android.content.Context;
 import android.util.Log;
 
 import com.tencent.smtt.sdk.QbSdk;
@@ -19,7 +21,6 @@ public class BaseApplication extends Application {
             @Override
             public void onCoreInitFinished() {
             }
-
             @Override
             public void onViewInitFinished(boolean b) {
                 Log.e(TAG, "内核加载结果: "+b );
@@ -28,17 +29,13 @@ public class BaseApplication extends Application {
         QbSdk.setTbsListener(new TbsListener() {
             @Override
             public void onDownloadFinish(int i) {
-
             }
-
             @Override
             public void onInstallFinish(int i) {
                 Log.e(TAG, "onInstallFinish: 安装下载完成" );
             }
-
             @Override
             public void onDownloadProgress(int i) {
-
             }
         });
         QbSdk.initX5Environment(getApplicationContext(), cb);
@@ -47,6 +44,8 @@ public class BaseApplication extends Application {
             TbsDownloader.startDownload(this);
         }
 
+        ActivityManager activityManager= (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        Log.e(TAG, "onCreate: "+activityManager.getMemoryClass());
     }
     public static BaseApplication getMyapp(){
         return Myapp;

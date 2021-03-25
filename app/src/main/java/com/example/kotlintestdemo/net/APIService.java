@@ -15,6 +15,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 /**
 *   author K.K
@@ -53,4 +54,13 @@ public interface APIService {
    */
     @GET("tree/json")
     Observable<BaseObjectBean<List<TixiBean>>> getTixiList();
+
+    /*
+       获取文章列表
+       https://www.wanandroid.com/article/list/0/json?cid=60
+       ? 后的参数会使用query
+       */
+    @GET("article/list/{page}/json?")
+    Observable<BaseObjectBean<data>> getArticleList(@Path("page") int page, @Query("cid") int cid);
+
 }

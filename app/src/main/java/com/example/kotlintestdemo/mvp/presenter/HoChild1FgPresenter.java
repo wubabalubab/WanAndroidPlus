@@ -20,6 +20,7 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
     public HoChild1FgPresenter() {
         this.model = new HoChild1FgModle();
     }
+
     @Override
     public void BannerData() {
         model.BannerData().compose(RxSuheduler.Obs_io_main())
@@ -33,9 +34,11 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
                     public void onNext(BaseObjectBean<List<BannerBean>> listb) {
                         mView.showBanner(listb);
                     }
+
                     @Override
                     public void onError(Throwable e) {
                     }
+
                     @Override
                     public void onComplete() {
                     }
@@ -53,7 +56,7 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
 
                     @Override
                     public void onNext(BaseObjectBean<List<data.DatasBean>> bean) {
-            mView.showTopArticle(bean);
+                        mView.showTopArticle(bean);
                     }
 
                     @Override

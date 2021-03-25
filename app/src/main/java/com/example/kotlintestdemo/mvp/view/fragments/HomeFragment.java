@@ -1,7 +1,9 @@
 package com.example.kotlintestdemo.mvp.view.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,6 +22,9 @@ import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.HoChild1FgMvp;
 import com.example.kotlintestdemo.mvp.presenter.HoChild1FgPresenter;
+import com.example.kotlintestdemo.mvp.view.activity.KnifeActivity;
+import com.example.kotlintestdemo.util.MyConstant;
+import com.example.kotlintestdemo.view.MainActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -53,7 +58,6 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     private List<data.DatasBean> toplist=new ArrayList<>();
 
     public HomeFragment() {
-
     }
 
     public static HomeFragment newInstance(String param1, String param2) {
@@ -132,6 +136,7 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
         }
     }
 
+
     @Override
     public void showBanner(BaseObjectBean<List<BannerBean>> bean) {
         if (bean.getErrorCode()==0) {
@@ -161,6 +166,10 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     @Override
     public void OnBannerClick(int position) {
         Log.e(TAG, "OnBannerClick: "+position);
+
+        Intent intent=new Intent(getContext(), KnifeActivity.class);
+        intent.putParcelableArrayListExtra(MyConstant.SP_CACHE,(ArrayList<? extends Parcelable>) list);
+        startActivity(intent);
     }
 
     private class Myload extends ImageLoader{
