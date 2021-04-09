@@ -3,16 +3,19 @@ package com.example.kotlintestdemo.mvp.view.fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.adapter.recyadapter.HoChild1FgRecyAdapter;
@@ -22,9 +25,8 @@ import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.HoChild1FgMvp;
 import com.example.kotlintestdemo.mvp.presenter.HoChild1FgPresenter;
-import com.example.kotlintestdemo.mvp.view.activity.KnifeActivity;
+import com.example.kotlintestdemo.mvp.view.activity.ResoursActivity;
 import com.example.kotlintestdemo.util.MyConstant;
-import com.example.kotlintestdemo.view.MainActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.listener.OnBannerListener;
@@ -56,6 +58,7 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     private List<String> imageurls=new ArrayList<>();
     private List<String> bannerTitles=new ArrayList<>();
     private List<data.DatasBean> toplist=new ArrayList<>();
+    private List<BannerBean> bannerList=new ArrayList<>();
 
     public HomeFragment() {
     }
@@ -119,6 +122,14 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
 
             }
         });
+        adapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull android.view.View view, int position) {
+                Intent intent=new Intent(getContext(),ResoursActivity.class);
+                intent.putExtra(MyConstant.CONTENT_URL, list.get(position).getLink());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -140,6 +151,7 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     @Override
     public void showBanner(BaseObjectBean<List<BannerBean>> bean) {
         if (bean.getErrorCode()==0) {
+            bannerList=bean.getData();
             for (int i = 0; i < bean.getData().size(); i++) {
                 imageurls.add(bean.getData().get(i).getImagePath());
                 bannerTitles.add(bean.getData().get(i).getDesc());
@@ -166,9 +178,8 @@ public class HomeFragment extends BaseMvpFragment<HoChild1FgPresenter> implement
     @Override
     public void OnBannerClick(int position) {
         Log.e(TAG, "OnBannerClick: "+position);
-
-        Intent intent=new Intent(getContext(), KnifeActivity.class);
-        intent.putParcelableArrayListExtra(MyConstant.SP_CACHE,(ArrayList<? extends Parcelable>) list);
+        Intent intent=new Intent(getContext(), ResoursActivity.class);
+        intent.putExtra(MyConstant.CONTENT_URL, bannerList.get(position).getUrl());
         startActivity(intent);
     }
 

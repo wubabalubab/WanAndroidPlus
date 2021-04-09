@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -24,13 +25,6 @@ public class HomeActivityVPAdapter extends FragmentPagerAdapter {
         this.fragments = fragments;
         this.context = context;
     }
-
-    public HomeActivityVPAdapter(@NonNull FragmentManager fm, int behavior, List<Fragment> fragments, Context context) {
-        super(fm, behavior);
-        this.fragments = fragments;
-        this.context = context;
-    }
-
     @NonNull
     @Override
     public Fragment getItem(int position) {
@@ -60,6 +54,5 @@ public class HomeActivityVPAdapter extends FragmentPagerAdapter {
                 break;
         }
         return view;
-
     }
 }

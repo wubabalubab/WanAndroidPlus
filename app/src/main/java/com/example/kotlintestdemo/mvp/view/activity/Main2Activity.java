@@ -66,27 +66,17 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
     public void initView() {
         RequestPermission();
         mPresenter = new Main2Presenter();
-//        mPresenter.attachView(this);
-//        mPresenter.homeData(0);
-
         List<Fragment> fragments = new ArrayList<>();
-
-//        FragmentManager fm=getSupportFragmentManager();
-//        HomeFragment fragment= (HomeFragment) fm.findFragmentByTag("fragment_tab");
-//        if (fragment != null) {
-//            fm.beginTransaction().remove(fragment).commit();
-//        }
-//        fm.beginTransaction().add();
 
         fragments.add(HomeFragment.newInstance("asdf", "asdf"));
         fragments.add(ProjectFragment.newInstance("asdf", "asdf"));
-        fragments.add(new OtherFragment());
-        fragments.add(new MineFragment());
+        fragments.add(OtherFragment.newInstance("", ""));
+        fragments.add(MineFragment.newInstance("asdf", "asdf"));
+
         HomeActivityVPAdapter vpAdapter = new HomeActivityVPAdapter(this, getSupportFragmentManager(),
                 FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, fragments);
 
-//        vpAdapter.setPrimaryItem();
-//        vpActmain.setOffscreenPageLimit(4);
+
         vpActmain.setAdapter(vpAdapter);
 
         vpActmain.setCurrentItem(0);
@@ -110,20 +100,8 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
         });
     }
 
-//    @SuppressLint("MissingSuperCall")
-//    @Override
-//    protected void onSaveInstanceState(@NonNull Bundle outState) {
-////        super.onSaveInstanceState(outState);
-//        if (outState != null) {
-//            String Fragmentag = "androidx.fragment.app";
-//            outState.remove(Fragmentag);
-//        }
-//    }
-
     @Override
     public void success(BaseObjectBean<data> bean) {
-        dataBaseObjectBean = bean;
-        datasList = dataBaseObjectBean.getData().getDatas();
     }
 
     @Override

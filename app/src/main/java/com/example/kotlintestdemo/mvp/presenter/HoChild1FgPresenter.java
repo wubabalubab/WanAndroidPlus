@@ -1,5 +1,8 @@
 package com.example.kotlintestdemo.mvp.presenter;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import com.example.kotlintestdemo.base.BaseMvpPresenter;
 import com.example.kotlintestdemo.bean.JRBean.BannerBean;
 import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
@@ -50,12 +53,12 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
         model.getTopArticle().compose(RxSuheduler.Obs_io_main())
                 .subscribe(new Observer<BaseObjectBean<List<data.DatasBean>>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(BaseObjectBean<List<data.DatasBean>> bean) {
+                    public void onNext(@NonNull BaseObjectBean<List<data.DatasBean>> bean) {
                         mView.showTopArticle(bean);
                     }
 
@@ -80,8 +83,9 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
                         mView.showloading();
                     }
 
+                    // FIXME: 21-4-10 invoke
                     @Override
-                    public void onNext(BaseObjectBean<data> bean) {
+                    public void onNext( BaseObjectBean<data> bean) {
                         mView.success(bean);
                     }
 

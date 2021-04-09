@@ -18,10 +18,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 /**
-*   author K.K
-*   created on 20/12/2020
-*   @Describe APIService
-*/
+ * author K.K
+ * created on 20/12/2020
+ *
+ * @Describe APIService
+ */
 
 public interface APIService {
 
@@ -34,21 +35,25 @@ public interface APIService {
 
     /**
      * 首页文章列表
+     *
      * @param page 页码 0开始
      * @return
      */
     @GET("article/list/{page}/json")
-    Observable<BaseObjectBean<data>> homeData(@Path("page")int page);
+    Observable<BaseObjectBean<data>> homeData(@Path("page") int page);
+
     /*
        获取banner
      */
     @GET("banner/json")
     Observable<BaseObjectBean<List<BannerBean>>> BannerData();
+
     /*
     获取首页置顶文章
      */
     @GET("article/top/json")
     Observable<BaseObjectBean<List<data.DatasBean>>> getTopArticle();
+
     /*
     体系三级列表
    */
@@ -62,5 +67,16 @@ public interface APIService {
        */
     @GET("article/list/{page}/json?")
     Observable<BaseObjectBean<data>> getArticleList(@Path("page") int page, @Query("cid") int cid);
+    /*
+        获取项目分fen类
+     */
+    @GET("project/tree/json")
+    Observable<BaseObjectBean<List<TixiBean>>> getProjectClassify();
+
+    /*  https://www.wanandroid.com/project/list/1/json?cid=294
+       获取项目分列表
+    */
+    @GET("project/list/{page}/json?")
+    Observable<BaseObjectBean<data>> getProjectList(@Path("page") int page,@Query("cid") int cid);
 
 }

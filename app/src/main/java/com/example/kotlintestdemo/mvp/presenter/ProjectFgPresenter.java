@@ -11,27 +11,29 @@ import com.example.kotlintestdemo.net.RxSuheduler;
 import java.util.List;
 
 import io.reactivex.Observer;
+import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 
-public class ProjectFgPresenter extends BaseMvpPresenter<ProjectFgContract.View> implements ProjectFgContract.Presenter{
+public class ProjectFgPresenter extends BaseMvpPresenter<ProjectFgContract.View> implements ProjectFgContract.Presenter {
 
     private ProjectFgModel model;
 
     public ProjectFgPresenter() {
         this.model = new ProjectFgModel();
     }
+
     @Override
-    public void showData(int page,int cid) {
-        model.getData(page,cid).compose(RxSuheduler.Obs_io_main())
+    public void showData(int page, int cid) {
+        model.getData(page, cid).compose(RxSuheduler.Obs_io_main())
                 .subscribe(new Observer<BaseObjectBean<data>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
+                    public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(BaseObjectBean<data> dataBaseObjectBean) {
-        mView.setData(dataBaseObjectBean);
+                    public void onNext(@NonNull BaseObjectBean<data> dataBaseObjectBean) {
+                        mView.setData(dataBaseObjectBean);
                     }
 
                     @Override
@@ -45,30 +47,31 @@ public class ProjectFgPresenter extends BaseMvpPresenter<ProjectFgContract.View>
                     }
                 });
     }
+
     @Override
     public void showTixiList() {
         model.getTixiList().compose(RxSuheduler.Obs_io_main())
                 .subscribe(new Observer<BaseObjectBean<List<TixiBean>>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-            }
+                    }
 
-            @Override
-            public void onNext(BaseObjectBean<List<TixiBean>> listBaseObjectBean) {
-                mView.setTixiList(listBaseObjectBean);
-            }
+                    @Override
+                    public void onNext(BaseObjectBean<List<TixiBean>> listBaseObjectBean) {
+                        mView.setTixiList(listBaseObjectBean);
+                    }
 
-            @Override
-            public void onError(Throwable e) {
+                    @Override
+                    public void onError(Throwable e) {
 
-            }
+                    }
 
-            @Override
-            public void onComplete() {
+                    @Override
+                    public void onComplete() {
 
-            }
-        });
+                    }
+                });
     }
 
 

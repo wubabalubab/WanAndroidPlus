@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:viewBindingIgnore="true"
+    android:background="@color/colorAccent"
     android:layout_height="match_parent">
     <ImageView
         android:layout_gravity="center"

@@ -2,6 +2,9 @@ package com.example.kotlintestdemo.bean.JRBean;
 
 import java.util.List;
 
+/**
+ * 体系 兼有 项目分类
+ */
 public class TixiBean {
 
         /**

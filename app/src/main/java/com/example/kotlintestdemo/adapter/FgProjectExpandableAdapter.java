@@ -63,7 +63,7 @@ public class FgProjectExpandableAdapter extends BaseExpandableListAdapter {
         private final TextView onename;
 
         public ViewHolder1(View itemView) {
-            this.onename = itemView.findViewById(R.id.tv_expandableparent);
+            onename = itemView.findViewById(R.id.tv_expandableparent);
         }
     }
     public static class ViewHolder2{

@@ -17,4 +17,13 @@
     <style name="splash" parent="MyTheme">
         <item name="android:background">@drawable/splash</item>
     </style>
+    <style name="TablayoutCustom" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@color/colorAccentblue</item>
+        <item name="tabIndicatorColor">@color/blue</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabGravity">center</item>
+        <item name="tabSelectedTextColor">@color/colorAccent</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">15dp</item>
+    </style>
 </resources>

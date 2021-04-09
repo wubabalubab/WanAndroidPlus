@@ -1,14 +1,19 @@
 package com.example.kotlintestdemo.mvp.view.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
 import com.chad.library.adapter.base.listener.OnLoadMoreListener;
 import com.chad.library.adapter.base.module.LoadMoreModule;
 import com.chad.library.adapter.base.viewholder.BaseViewHolder;
@@ -20,10 +25,11 @@ import com.example.kotlintestdemo.bean.JRBean.TixiBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.mvp.contract.ProjectFgContract;
 import com.example.kotlintestdemo.mvp.presenter.ProjectFgPresenter;
+import com.example.kotlintestdemo.mvp.view.activity.ResoursActivity;
+import com.example.kotlintestdemo.util.MyConstant;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +39,6 @@ import butterknife.BindView;
 
 public class ProjectFragment extends BaseMvpFragment<ProjectFgPresenter> implements ProjectFgContract.View {
     private static final String TAG = "ProjectFragment";
-
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     @BindView(R.id.espandablelist)
@@ -114,35 +119,46 @@ public class ProjectFragment extends BaseMvpFragment<ProjectFgPresenter> impleme
                 Log.e(TAG, "onLoadMore: page cid"+page+" "+cid);
             }
         });
+        mAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(@NonNull BaseQuickAdapter<?, ?> adapter, @NonNull android.view.View view, int position) {
+                Intent intent=new Intent(getContext(),ResoursActivity.class);
+                intent.putExtra(MyConstant.CONTENT_URL, beanList.get(position).getLink());
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
     public void setTixiList(BaseObjectBean<List<TixiBean>> bean) {
-
-        list.addAll(bean.getData());
-        if (first) {
-            mPresent.showData(0, list.get(0).getChildren().get(0).getId());
-            first=false;
-        }else {
-            mPresent.showData(page, list.get(0).getChildren().get(cid).getId());
-            first=false;
+        if (bean.getErrorCode()==0) {
+            list.addAll(bean.getData());
+            if (first) {
+                mPresent.showData(0, list.get(0).getChildren().get(0).getId());
+                first=false;
+            }else {
+                mPresent.showData(page, list.get(0).getChildren().get(cid).getId());
+                first=false;
+            }
+            isAdd=false;
+            adapter.notifyDataSetChanged();
         }
-        isAdd=false;
-        adapter.notifyDataSetChanged();
+
     }
 
     @Override
     public void setData(BaseObjectBean<data> bean) {
-        if (!isAdd) {
-            beanList.clear();
-        }
-        Log.e(TAG, "setData: page cid "+page+" "+cid );
-        beanList.addAll(bean.getData().getDatas());
-        mAdapter.notifyDataSetChanged();
-        if (bean.getData().getDatas().size() > 0) {
-            mAdapter.getLoadMoreModule().loadMoreComplete();
-        }else {
-            mAdapter.getLoadMoreModule().loadMoreEnd();
+        if (bean.getErrorCode()==0) {
+            if (!isAdd) {
+                beanList.clear();
+            }
+            beanList.addAll(bean.getData().getDatas());
+            mAdapter.notifyDataSetChanged();
+            if (bean.getData().getDatas().size() > 0) {
+                mAdapter.getLoadMoreModule().loadMoreComplete();
+            }else {
+                mAdapter.getLoadMoreModule().loadMoreEnd();
+            }
         }
     }
 
@@ -171,6 +187,13 @@ public class ProjectFragment extends BaseMvpFragment<ProjectFgPresenter> impleme
         protected void convert(@NotNull BaseViewHolder baseViewHolder, data.DatasBean data) {
 
             baseViewHolder.setText(R.id.tv_item_rv_fgproject_title, data.getTitle());
+            baseViewHolder.setText(R.id.tv_item_rv_fgproject_classify, data.getChapterName());
+            baseViewHolder.setText(R.id.tv_item_rv_fgproject_classify2, data.getSuperChapterName());
+            if (data.getAuthor()!=null&& !TextUtils.isEmpty(data.getAuthor())) {
+                baseViewHolder.setText(R.id.tv_item_rv_fgproject_author, data.getAuthor());
+            } else {
+                baseViewHolder.setText(R.id.tv_item_rv_fgproject_author, data.getShareUser());
+            }
         }
     }
 }

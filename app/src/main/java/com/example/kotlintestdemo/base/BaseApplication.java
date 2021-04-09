@@ -17,6 +17,7 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Myapp=this;
+        QbSdk.setDownloadWithoutWifi(true);
         QbSdk.PreInitCallback cb=new QbSdk.PreInitCallback() {
             @Override
             public void onCoreInitFinished() {
