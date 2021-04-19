@@ -3,6 +3,7 @@ package com.example.kotlintestdemo.mvp.view.fragments;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.kotlintestdemo.R;
 import com.example.kotlintestdemo.bean.JRBean.data;
+import com.example.kotlintestdemo.mvp.view.activity.ResoursActivity;
+import com.example.kotlintestdemo.util.MyConstant;
 
 import java.util.List;
 
@@ -39,6 +42,14 @@ public class MyItemRecyclerViewAdapter extends RecyclerView.Adapter<MyItemRecycl
         holder.mContentView.setText(mValues.get(position).getAuthor());
         holder.mClassify.setText(mValues.get(position).getChapterName());
 
+        holder.imGithub.setOnClickListener(v ->{
+            context.startActivity(new Intent(context, ResoursActivity.class)
+                    .putExtra(MyConstant.CONTENT_URL, mValues.get(position).getProjectLink()));
+        });
+        holder.itemView.setOnClickListener(v -> {
+            context.startActivity(new Intent(context, ResoursActivity.class)
+                    .putExtra(MyConstant.CONTENT_URL, mValues.get(position).getLink()));
+        });
     }
 
     @Override

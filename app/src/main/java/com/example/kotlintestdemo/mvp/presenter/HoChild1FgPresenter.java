@@ -85,7 +85,7 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
 
                     // FIXME: 21-4-10 invoke
                     @Override
-                    public void onNext( BaseObjectBean<data> bean) {
+                    public void onNext( @NonNull BaseObjectBean<data> bean) {
                         mView.success(bean);
                     }
 

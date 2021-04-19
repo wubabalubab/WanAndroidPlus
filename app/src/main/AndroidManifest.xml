@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+        <activity android:name=".mvp.view.activity.PwdLoginActivity"></activity>
         <activity android:name=".mvp.view.activity.ResoursActivity" />
         <activity
             android:name=".mvp.view.activity.SplashActivity"

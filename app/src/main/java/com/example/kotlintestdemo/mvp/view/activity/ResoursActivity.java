@@ -55,6 +55,12 @@ public class ResoursActivity extends BaseActivity {
             super.onReceivedError(webView, i, s, s1);
         }
 
+        // TODO: 21-4-12 url intercepter
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView webView, String s) {
+            return super.shouldOverrideUrlLoading(webView, s);
+        }
+
         @Override
         public void onReceivedHttpError(WebView webView, WebResourceRequest webResourceRequest, WebResourceResponse webResourceResponse) {
             super.onReceivedHttpError(webView, webResourceRequest, webResourceResponse);

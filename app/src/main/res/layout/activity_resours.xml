@@ -7,9 +7,11 @@
 
     <com.tencent.smtt.sdk.WebView
         android:id="@+id/web_actresours"
+        android:layout_below="@+id/ll_actresours"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <LinearLayout
+        android:id="@+id/ll_actresours"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

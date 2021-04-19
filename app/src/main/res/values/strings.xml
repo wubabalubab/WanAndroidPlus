@@ -4,6 +4,11 @@
     <string name="title_activity_login">Sign in</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
+    <string name="signin">登录</string>
+    <string name="collection">收藏</string>
+    <string name="commontool">常用工具</string>
+    <string name="mycollection">我的收藏</string>
+    <string name="signup">注册</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>

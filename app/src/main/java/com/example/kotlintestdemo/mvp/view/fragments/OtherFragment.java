@@ -74,7 +74,7 @@ public class OtherFragment extends BaseMvpFragment<OhterFgPresenter> implements 
         vpAdapter = new FgOtherViewPagerAdapter(getContext(),fragments,getParentFragmentManager(),
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(vpAdapter);
-
+        viewPager.setCurrentItem(0);
 
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -98,7 +98,6 @@ public class OtherFragment extends BaseMvpFragment<OhterFgPresenter> implements 
                 if (!TextUtils.isEmpty(tixiBeans.get(i).getName())) {
                     list.add(tixiBeans.get(i).getName());
                 }
-                Log.e(TAG, "setProjectClassify: create" );
                 fragments.add(FgOtherChildFragment.newInstance(2,tixiBeans.get(i).getId()));
             }
             vpAdapter.notifyDataSetChanged();

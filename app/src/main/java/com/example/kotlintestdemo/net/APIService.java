@@ -4,15 +4,18 @@ package com.example.kotlintestdemo.net;
 import com.example.kotlintestdemo.bean.JRBean.BannerBean;
 import com.example.kotlintestdemo.bean.JRBean.BaseObjectBean;
 import com.example.kotlintestdemo.bean.JRBean.TixiBean;
+import com.example.kotlintestdemo.bean.JRBean.UserBean;
 import com.example.kotlintestdemo.bean.JRBean.data;
 import com.example.kotlintestdemo.bean.JRBean.loginbean;
 
 import java.util.List;
 
 import io.reactivex.Observable;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -78,5 +81,13 @@ public interface APIService {
     */
     @GET("project/list/{page}/json?")
     Observable<BaseObjectBean<data>> getProjectList(@Path("page") int page,@Query("cid") int cid);
+
+    @POST("user/login")
+    Observable<BaseObjectBean<UserBean>> getLogin(@Query("username") String username, @Query("password")String password);
+    @POST("user/register")
+    Observable<BaseObjectBean<UserBean>> getRegister(@Query("username")  String username,
+                                                   @Query("password") String password,@Query("repassword") String rpassword);
+    @GET("logout/json")
+    Observable<BaseObjectBean<String>> getloginout();
 
 }

@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -27,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.Optional;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -36,11 +38,14 @@ public class Main2Activity extends BaseMvpActivity<Main2Presenter> implements Ma
     BaseObjectBean<data> dataBaseObjectBean;
     List<data.DatasBean> datasList=new ArrayList<>();
     private static final int requestCode = 893;
+    @Nullable
     @BindView(R.id.vp_actmain)
     ViewPager vpActmain;
+    @Nullable
     @BindView(R.id.tab_actmain)
     TabLayout tabActmain;
 
+    // FIXME: 21-4-19 view bind
     @Override
     public int layoutId() {
         return R.layout.activity_main2;
