@@ -22,6 +22,7 @@ public class ResoursActivity extends BaseActivity {
     private String url = "";
 
 
+    // TODO: 22-6-23 webview 待优化
     @OnClick({R.id.im_actresours_collection, R.id.im_actresours})
     public void OnClick(View view) {
         switch (view.getId()) {

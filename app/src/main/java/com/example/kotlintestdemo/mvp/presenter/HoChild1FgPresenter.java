@@ -35,7 +35,10 @@ public class HoChild1FgPresenter extends BaseMvpPresenter<HoChild1FgMvp.View>
 
                     @Override
                     public void onNext(BaseObjectBean<List<BannerBean>> listb) {
-                        mView.showBanner(listb);
+                        // TODO: 22-6-23 此判空有问题
+                        if (mView != null) {
+                            mView.showBanner(listb);
+                        }
                     }
 
                     @Override

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.kotlintestdemo">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,7 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".mvp.view.activity.PwdLoginActivity"></activity>
+        <activity
+            android:name=".mvp.view.activity.ViewPager2Activity"
+            android:exported="false" />
+        <activity android:name=".mvp.view.activity.PwdLoginActivity" />
         <activity android:name=".mvp.view.activity.ResoursActivity" />
         <activity
             android:name=".mvp.view.activity.SplashActivity"
@@ -32,7 +34,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.view.activity.KnifeActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

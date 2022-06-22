@@ -22,6 +22,7 @@ import com.example.kotlintestdemo.base.BaseMvpFragment;
 import com.example.kotlintestdemo.bean.JRBean.UserBean;
 import com.example.kotlintestdemo.mvp.presenter.PwdLoginActPresenter;
 import com.example.kotlintestdemo.mvp.view.activity.PwdLoginActivity;
+import com.example.kotlintestdemo.mvp.view.activity.ViewPager2Activity;
 import com.example.kotlintestdemo.util.MyConstant;
 import com.google.gson.Gson;
 import com.google.gson.JsonParseException;
@@ -40,6 +41,8 @@ public class MineFragment extends BaseFragment {
     TextView tvTitle;
     @BindView(R.id.tv_fgmine_logout)
     TextView tvLogout;
+    @BindView(R.id.tv_fgmine_tool)
+    TextView tvMoreTool;
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -58,7 +61,10 @@ public class MineFragment extends BaseFragment {
                     startActivityForResult(new Intent(getContext(), PwdLoginActivity.class),100);
                 }
                 break;
+            case R.id.tv_fgmine_tool:
+                break;
             case R.id.tv_fgmine_collection:
+                startActivity(new Intent(getContext(), ViewPager2Activity.class));
                 break;
             case R.id.tv_fgmine_logout:
                 PwdLoginActivity activity=new PwdLoginActivity();

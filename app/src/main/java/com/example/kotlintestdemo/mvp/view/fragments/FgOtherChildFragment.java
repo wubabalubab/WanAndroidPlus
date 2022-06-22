@@ -72,10 +72,10 @@ public class FgOtherChildFragment extends BaseMvpFragment<OhterFgPresenter> impl
 
     @Override
     protected void initView(View View) {
+        // TODO: 22-6-23 优化分页加载
         mPresent=new OhterFgPresenter();
         mPresent.attachView(FgOtherChildFragment.this);
         mPresent.showProjectList(page,childId);
-        Log.e(TAG, "initView: "+page+childId);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, LinearLayout.VERTICAL));
         adapter=new MyItemRecyclerViewAdapter(getContext(),dataList);
         recyclerView.setAdapter(adapter);
