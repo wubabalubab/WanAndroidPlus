@@ -21,6 +21,7 @@ import com.example.kotlintestdemo.base.BaseFragment;
 import com.example.kotlintestdemo.base.BaseMvpFragment;
 import com.example.kotlintestdemo.bean.JRBean.UserBean;
 import com.example.kotlintestdemo.mvp.presenter.PwdLoginActPresenter;
+import com.example.kotlintestdemo.mvp.view.activity.CalanderActivity;
 import com.example.kotlintestdemo.mvp.view.activity.PwdLoginActivity;
 import com.example.kotlintestdemo.mvp.view.activity.ViewPager2Activity;
 import com.example.kotlintestdemo.util.MyConstant;
@@ -64,7 +65,7 @@ public class MineFragment extends BaseFragment {
             case R.id.tv_fgmine_tool:
                 break;
             case R.id.tv_fgmine_collection:
-                startActivity(new Intent(getContext(), ViewPager2Activity.class));
+                startActivity(new Intent(getContext(), CalanderActivity.class));
                 break;
             case R.id.tv_fgmine_logout:
                 PwdLoginActivity activity=new PwdLoginActivity();

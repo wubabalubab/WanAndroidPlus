@@ -21,6 +21,9 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".mvp.view.activity.CalanderActivity"
+            android:exported="false" />
+        <activity
             android:name=".mvp.view.activity.ViewPager2Activity"
             android:exported="false" />
         <activity android:name=".mvp.view.activity.PwdLoginActivity" />
@@ -52,18 +55,16 @@
             android:name="design_height_in_dp"
             android:value="640" />
 
-        <activity android:name=".mvp.view.activity.Main2Activity" />
-        <activity android:name=".mvp.view.activity.HandlerActivity" />
-        <activity android:name=".mvp.view.activity.DeleteActivity" />
-        <activity android:name=".mvp.view.activity.XBannerActivity" />
-        <activity android:name=".mvp.view.fragments.BaseAdapterHelperDemo" />
-        <activity android:name=".mvp.view.activity.RecyclerActivity" />
-        <activity android:name=".mvp.view.activity.Swipe2Activity" />
-        <activity android:name=".mvp.view.activity.SwipeActivity" />
         <activity
-            android:name=".view.ui.login.LoginActivity"
-            android:label="@string/title_activity_login" />
-        <activity android:name=".view.MainActivity" />
+            android:name=".mvp.view.activity.Main2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".mvp.view.fragments.BaseAdapterHelperDemo"
+            android:exported="false" />
+        <activity
+            android:name=".mvp.view.activity.Swipe2Activity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
