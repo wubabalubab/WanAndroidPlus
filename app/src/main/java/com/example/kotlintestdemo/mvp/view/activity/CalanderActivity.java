@@ -2,6 +2,7 @@ package com.example.kotlintestdemo.mvp.view.activity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -39,6 +40,8 @@ public class CalanderActivity extends AppCompatActivity {
 
     private int firstDay;
     private int secondDay;
+    private String startTime;
+    private String endTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +57,18 @@ public class CalanderActivity extends AppCompatActivity {
         tvSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCalendar.set(Calendar.MONTH, Integer.parseInt(edCalender.getText().toString()) - 1);
-                tvCalender.setText(String.format("%d %d", mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH) + 1));
+                if (TextUtils.isEmpty(startTime)) {
+                    startTime = edCalender.getText().toString();
+                } else {
+                    if (TextUtils.isEmpty(endTime)) {
+                        endTime = edCalender.getText().toString();
+
+                    } else {
+                        startTime = " ";
+                        endTime = " ";
+                    }
+                }
+                tvCalender.setText(startTime + "  " + endTime);
                 getData(mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
             }
         });
@@ -63,6 +76,9 @@ public class CalanderActivity extends AppCompatActivity {
         mAdapter = new mAdapter(calanderBeanList);
         rvCalendars.setAdapter(mAdapter);
         getData(mCalendar.getActualMaximum(Calendar.DAY_OF_MONTH));
+
+        Calendar calendar = Calendar.getInstance();
+        Log.e(TAG, "onCreate: " + calendar.get(Calendar.MONTH));
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -98,7 +114,7 @@ public class CalanderActivity extends AppCompatActivity {
                         textView.setBackgroundColor(getResources().getColor(R.color.colorAccent));
 
                         for (CalanderBean calanderBean : calanderBeanList) {
-                            if (calanderBean.getDay()>=firstDay&&calanderBean.getDay()<=secondDay) {
+                            if (calanderBean.getDay() >= firstDay && calanderBean.getDay() <= secondDay) {
                                 calanderBean.setSelect(true);
                             }
                         }
@@ -125,11 +141,11 @@ public class CalanderActivity extends AppCompatActivity {
 
         @Override
         protected void convert(@NonNull BaseViewHolder baseViewHolder, CalanderBean calanderBean) {
-            TextView tvitem=baseViewHolder.getView(R.id.tv_item_calander_day);
+            TextView tvitem = baseViewHolder.getView(R.id.tv_item_calander_day);
             if (calanderBean.getDay() == 0) {
-                tvitem.setText( "  ");
+                tvitem.setText("  ");
             } else {
-                tvitem.setText( String.valueOf(calanderBean.getDay()));
+                tvitem.setText(String.valueOf(calanderBean.getDay()));
             }
             if (calanderBean.isSelect()) {
                 tvitem.setBackgroundColor(getResources().getColor(R.color.design_default_color_primary));
